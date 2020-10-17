@@ -1,5 +1,6 @@
 from PIL import Image
 import itertools
+import warnings
 
 from exceptions import *
 
@@ -72,3 +73,5 @@ def bin_to_image(binary, save_path, char_length=8):
                 i += 1
     pic.save(save_path)
     pic.close()
+    if i>0:
+        warnings.warn("Something went wrong. Maybe you weren't using image_to_bin to convert the original image to bin. {} pixel haven't been put to the image.".format(i))
